@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MyViewController.h
 //  EditableTableView
 //
 //  Created by Syngmaster on 06/05/2017.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface MyViewController : UIViewController
 
 @end
-
