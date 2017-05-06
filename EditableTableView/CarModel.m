@@ -71,8 +71,8 @@ static int colorCount = 12;
     CarModel *newCar = [[CarModel alloc] init];
     
     newCar.name = carModelArray[arc4random() % modelCount];
-    newCar.name = carColor[arc4random() % colorCount];
-    newCar.yearMake = arc4random() % 25 + 2000;
+    newCar.color = carColor[arc4random() % colorCount];
+    newCar.yearMake = arc4random() % 25 + 1990;
     
     return newCar;
     
