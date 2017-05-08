@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *carArray;
+@property (weak, nonatomic) UILabel *footerLabel;
 
 @end
 
@@ -115,6 +116,7 @@
     [self.tableView endUpdates];
     
     [self delayInteractions];
+
 }
 
 
@@ -137,13 +139,9 @@
 
 - (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
-    return [NSString stringWithFormat:@"Group %i", (int)section];
+    Group *group = [self.carArray objectAtIndex:section];
     
-}
-
-- (nullable NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    
-    return [NSString stringWithFormat:@"Comments"];
+    return [NSString stringWithFormat:@"%@", group.name];
     
 }
 
@@ -242,11 +240,9 @@
         group.carArray = tempArray;
         
         [self.tableView beginUpdates];
-        
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
-        
         [self.tableView endUpdates];
-        
+
     }
     
 }
@@ -300,6 +296,7 @@
             tempArray = [NSMutableArray array];
 
         }
+        
         NSInteger newIndex = 0;
         [tempArray insertObject:[CarModel generateRandomCar] atIndex:0];
         group.carArray = tempArray;
@@ -307,12 +304,12 @@
         [self.tableView beginUpdates];
         
         NSIndexPath *newIndexPath = [NSIndexPath indexPathForItem:newIndex + 1 inSection:indexPath.section];
-        
         [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
         
         [self.tableView endUpdates];
         
         [self delayInteractions];
+
     }
     
 }
